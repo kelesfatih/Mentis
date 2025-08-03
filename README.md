@@ -1,5 +1,7 @@
 # Mentis - A Privacy-First, Fine-Tuned Gemma 3n for Mental Health
 
+Please refer https://deepmind.google/models/gemma/gemma-3n/ for any kind of distribution and commercial usage. 
+
 # Installation
 For manual installation please scroll down. Experienced users might find manual installation more convenient.
 
@@ -48,6 +50,7 @@ python mentis.py
 open-webui serve
 ```
 App ready at localhost:8080
+
 
 
 
