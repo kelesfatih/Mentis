@@ -1,7 +1,7 @@
 # Mentis - A Privacy-First, Fine-Tuned Gemma 3n for Mental Health
 
 # Installation
-For manual installation please scroll down.
+For manual installation please scroll down. Experienced users might find manual installation more convenient.
 
 Install Python
 https://www.python.org/ftp/python/3.11.9/python-3.11.9-amd64.exe
@@ -48,6 +48,7 @@ python mentis.py
 open-webui serve
 ```
 App ready at localhost:8080
+
 
 
 
