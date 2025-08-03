@@ -2,8 +2,13 @@
 
 # Installation
 For manual installation please scroll down.
-
-
+Install Python
+https://www.python.org/ftp/python/3.11.9/python-3.11.9-amd64.exe
+Download this repository:
+https://github.com/kelesfatih/Mentis/archive/refs/heads/main.zip
+Unzip the folder.
+Double-click on start.bat.
+You are ready to go. Downloading models may take a while.
 
 # Manual Installation
 You need to install Ollama, Python 3.11 and Git for manual installation.
@@ -38,4 +43,5 @@ python mentis.py
 open-webui serve
 ```
 App ready at localhost:8080
+
 
