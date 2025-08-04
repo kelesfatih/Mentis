@@ -1,8 +1,15 @@
 @echo off
 TITLE Mentis Launcher
-SET "FLAG_FILE=setup_complete.flag"
+SET "FLAG_FILE=%USERPROFILE%\setup_complete.flag"
+SET "DATA_DIR=C:\open-webui\data"
 
-REM Check if the setup completion flag exists.
+REM Create OpenWebUI data directory if it doesn't exist
+IF NOT EXIST "%DATA_DIR%" (
+    ECHO Creating OpenWebUI data directory...
+    mkdir "%DATA_DIR%" 2>nul
+)
+
+REM Check if the setup completion flag exists in user directory.
 IF EXIST "%FLAG_FILE%" (
     REM If it exists, run the normal launcher.
     ECHO Setup has already been completed. Starting the application...
@@ -24,8 +31,8 @@ IF EXIST "%FLAG_FILE%" (
         exit /b %ERRORLEVEL%
     )
     
-    REM If setup was successful, create the flag file.
-    ECHO Setup successful. Creating completion flag.
+    REM If setup was successful, create the flag file in user directory.
+    ECHO Setup successful. Creating completion flag in user directory.
     ECHO Setup completed on %DATE% at %TIME% > "%FLAG_FILE%"
     
     ECHO.

@@ -5,7 +5,7 @@ ECHO Starting Ollama and Open WebUI services...
 
 REM Start the servers in new, separate, hidden windows using PowerShell
 powershell -Command "Start-Process -FilePath 'ollama' -ArgumentList 'serve' -WindowStyle Hidden"
-powershell -Command "Start-Process -FilePath 'open-webui' -ArgumentList 'serve' -WindowStyle Hidden"
+powershell -Command "if (!(Test-Path 'C:\open-webui\data')) { New-Item -ItemType Directory -Path 'C:\open-webui\data' -Force }; Start-Process -FilePath 'powershell' -ArgumentList '-Command', '$env:DATA_DIR=\"C:\open-webui\data\"; uvx --python 3.11 open-webui@latest serve' -WindowStyle Hidden"
 
 ECHO Waiting for port 8080 to become available. This may take a moment...
 ECHO This window will show a dot every second while waiting.
@@ -33,4 +33,4 @@ start http://localhost:8080
 
 ECHO Browser has been launched.
 ECHO The servers are running in the background. To stop them, use Task Manager.
-pause
+pause8080

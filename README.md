@@ -1,59 +1,66 @@
 # Mentis - A Privacy-First, Fine-Tuned Gemma 3n for Mental Health
 
-This notebook utilizes a finetuned Gemma 3N model. Please refer Deepmind's official documentation for any kind of distribution and commercial usage. 
+If you are a developer you may want to run these commands after executable test to kill port 8080 and Ollama.
 
-# Installation
-For manual installation please scroll down. Experienced users might find manual installation more convenient.
+```powershell
+Get-NetTCPConnection -LocalPort 8080 | ForEach-Object { Stop-Process -Id $_.OwningProcess -Force }
+```
 
-Install Python
-https://www.python.org/ftp/python/3.11.9/python-3.11.9-amd64.exe
+```powershell
+Get-Process | Where-Object {$_.ProcessName -like '*ollama*'} | Stop-Process
+```
+
+## Windows Installation
+
+For manual installation please scroll down.
+
 
 Download this repository:
 https://github.com/kelesfatih/Mentis/archive/refs/heads/main.zip
-
 Unzip the folder.
+Right-click on start.bat.
+Select "Run as administrator".
 
-Double-click on start.bat.
+## Manual Installation
 
-You are ready to go. Downloading models may take a while.
-
-# Manual Installation
-You need to install Ollama, Python 3.11 and Git for manual installation.
+You should already have Ollama, Python 3.11 and Git for manual installation.
 
 ## Fetch Repository
-```
+
+```bash
 git clone https://github.com/kelesfatih/Mentis.git
 ```
+
 ## Navigate to project directory
-```
+
+```bash
 cd Mentis
 ```
+
 ## Install requirements
 
-```
+```bash
 pip install -r requirements.txt
 ```
+
 ## Start Ollama
-```
+
+```bash
 ollama serve
 ```
-Wait for a while to Ollama start, after in a different CMD window run this:
-```
+
+```bash
 ollama pull hf.co/kelesfatih/gemma-3N-finetune-mentis
 ```
-Finally custimize model with Ollama
-```
+
+```bash
 python mentis.py
 ```
+
 ## Start UI
-```
+
+```bash
 open-webui serve
 ```
+
 App ready at localhost:8080
-
-
-
-
-
-
-

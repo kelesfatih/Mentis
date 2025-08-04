@@ -31,42 +31,7 @@ else:
         print("Ollama installation failed. Exiting setup.")
         exit(1)
 
-# Python 3.11.9 setup
-python_url = "https://www.python.org/ftp/python/3.11.9/python-3.11.9-amd64.exe"
-python_installer = "python-3.11.9-amd64.exe"
-
-def python_3_11_installed():
-    try:
-        output = subprocess.check_output(["py", "-3.11", "--version"], stderr=subprocess.STDOUT)
-        return b"3.11" in output
-    except Exception:
-        return False
-
-if python_3_11_installed():
-    print("Python 3.11 is already installed.")
-else:
-    print("Python 3.11 is not installed. Downloading and installing...")
-    download_file(python_url, python_installer)
-    try:
-        subprocess.run([os.path.abspath(python_installer), "/quiet", "InstallAllUsers=1", "PrependPath=1"], check=True)
-        print("Python 3.11 installation complete.")
-    except subprocess.CalledProcessError:
-        print("Python installation failed. Exiting setup.")
-        exit(1)
-
-requirements_file = "requirements.txt"
-if os.path.exists(requirements_file):
-    print("Installing Python dependencies...")
-    try:
-        subprocess.run(["py", "-3.11", "-m", "pip", "install", "-r", requirements_file], check=True)
-        print("Dependencies installed.")
-    except subprocess.CalledProcessError:
-        print("Dependency installation failed. Exiting setup.")
-        exit(1)
-else:
-    print(f"{requirements_file} not found.")
-
-# Start Ollama serve in background
+# Start Ollama server in background
 try:
     ollama_proc = subprocess.Popen(
         ["ollama", "serve"],
@@ -93,3 +58,23 @@ try:
     subprocess.run(["py", "-3.11", "mentis.py"], check=True)
 except subprocess.CalledProcessError:
     print("mentis.py failed to run.")
+
+print("Stopping Ollama processes...")
+try:
+    subprocess.run([
+        "powershell", "-Command", 
+        "Get-Process | Where-Object {$_.ProcessName -like '*ollama*'} | Stop-Process"
+    ], check=True)
+    print("Ollama processes stopped successfully.")
+except subprocess.CalledProcessError:
+    print("Failed to stop Ollama processes.")
+
+print("Installing UV package manager...")
+try:
+    subprocess.run([
+        "powershell", "-ExecutionPolicy", "ByPass", "-c", 
+        "irm https://astral.sh/uv/install.ps1 | iex"
+    ], check=True)
+    print("UV installation complete.")
+except subprocess.CalledProcessError:
+    print("UV installation failed.")
