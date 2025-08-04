@@ -6,7 +6,7 @@ For manual installation please scroll down.
 Download app here:
 https://github.com/kelesfatih/Mentis/releases/download/first_release/Mentis.exe
 
-It might take a while to install necessary programs and model. After installation it takes less than a minute to launch application.
+It might take a while to first time install necessary programs and model. Please be ready for about 10GB download. After installation it takes less than a minute to launch application.
 
 ## Manual Installation
 
@@ -61,4 +61,5 @@ open-webui serve
 ```
 
 App ready at localhost:8080
+
 
