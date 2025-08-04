@@ -10,7 +10,7 @@ It might take a while to first time install necessary programs and model. Please
 
 ## Manual Installation
 
-If you are a developer and test executable file you may want to run these commands after test to kill port 8080 and Ollama.
+If you are a developer and testing executable file you may want to run these commands after test to kill port 8080 and Ollama.
 
 ```powershell
 Get-NetTCPConnection -LocalPort 8080 | ForEach-Object { Stop-Process -Id $_.OwningProcess -Force }
@@ -61,6 +61,7 @@ open-webui serve
 ```
 
 App ready at localhost:8080
+
 
 
 
