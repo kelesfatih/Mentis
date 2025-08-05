@@ -3,7 +3,7 @@
 ## Windows Installation
 For manual installation please scroll down.
 
-First Install Python (check add to path box while installing):
+Prerequisites: Ensure you have Python 3.11 (Please check add to path box while installing):
 https://www.python.org/ftp/python/3.11.9/python-3.11.9-amd64.exe
 
 Download app here:
@@ -64,6 +64,7 @@ open-webui serve
 ```
 
 App ready at localhost:8080
+
 
 
 
